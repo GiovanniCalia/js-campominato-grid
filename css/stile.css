@@ -6,6 +6,11 @@
 
 }
 
+.selected{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
 .box{
     width: 3rem;
     height: 3rem;
