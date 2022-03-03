@@ -1,32 +1,26 @@
-const eleText = document.getElementById("text");
+const eleLevel = document.getElementById("level");
 const btnPlay = document.getElementById("play");
-let areaBoxesEasy = document.getElementById("container-easy");
-let areaBoxesMedium = document.getElementById("container-medium");
-let areaBoxesHard = document.getElementById("container-hard");
-const btnEasy = document.getElementById("easy");
-const btnMedium = document.getElementById("medium");
-const btnHard = document.getElementById("hard");
+const eleGrid = document.querySelector(".grid");
 
-for (i = 1; i <= 100; i++){
-    areaBoxesEasy.innerHTML += `<div class="box">${i}</div>`;
-    console.log(areaBoxesEasy);
+
+btnPlay.addEventListener("click", setupGame);
+
+arrLevels = [100, 81, 49];
+
+function setupGame(){
+    eleGrid.innerHTML = "";
+    const indexLevel = parseInt(eleLevel.value);
+    const cellsCount = arrLevels[indexLevel];
+    const cellsPerRow = Math.sqrt(cellsCount);
+
+    for (let cellNum = 1; cellNum <= cellsCount; cellNum++){
+        const eleCell = document.createElement("div");
+        eleCell.classList.add("cell");
+        eleCell.innerHTML = cellNum; 
+        eleCell.style.width = `calc(100% / ${cellsPerRow})`;
+        eleCell.style.height = `calc(100% / ${cellsPerRow})`;
+        eleGrid.append(eleCell);
+    }
 }
 
-for (i = 1; i <= 81; i++){
-    areaBoxesMedium.innerHTML += `<div class="box">${i}</div>`;
-    console.log(areaBoxesMedium);
-    areaBoxesMedium.style.display = "none";
-}
 
-for (i = 1; i <= 49; i++){
-    areaBoxesHard.innerHTML += `<div class="box">${i}</div>`;
-    console.log(areaBoxesHard);
-    areaBoxesHard.style.display = "none";
-}
-
-let found = false;
-btnPlay.addEventListener("click", function(){ 
-    if (areaBoxesMedium.style.display = "flex"){
-        found = true;
-    } 
-})
